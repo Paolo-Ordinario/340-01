@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>G-Market</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+    body {
+        font-family: 'DM Sans', sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+    }
+
+    .page-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .page-container {
+        max-width: 1200px;
+        margin: 0 auto 40px auto;
+    }
+
+    #searchInput {
+        width: 100%;
+        padding: 10px 15px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+
+    #searchInput:focus {
+        border-color: #22c277;
+        box-shadow: 0 0 8px rgba(34, 194, 119, 0.15);
+    }
+
+    .product-section {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 0px 10px rgba(0,0,0,0.1);
+    }
+
+    .product-section h5 {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 15px
+    }
+
+    .product-grid {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    .product-card {
+        border: 1px solid #eee;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0px 5px rgba(0,0,0,0.1);
+        transition: transform 0.2s ease;
+        cursor: pointer;
+        background: white;
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .product-card:hover {
+        transform: translateY(-3px);
+    }
+
+    .product-card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .product-name {
+        font-size: 14px;
+        font-weight: 500;
+        margin: 0 0 4px 0;
+    }
+
+    .product-seller {
+        font-size: 12px;
+        color: #888;
+        margin: 0 0 4px 0;
+    }
+
+    .product-price {
+        font-size: 16px;
+        font-weight: bold;
+        color: #1c1c1e;
+        margin: 0;
+    }
+
+    .no-results {
+        grid-column: 1/-1;
+        text-align: center;
+        padding: 3rem;
+        color: #888;
+    }
+
+    @media (max-width: 576px) {
+        .product-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+    <body>
+    <nav class = "navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class = "container">
+            <a class = "navbar-brand" href="prototype.html">G-Market</a>
+            <div class = "navbar-nav">
+                <a class = "nav-link" href = "prototype.html">Market</a>
+                <a class = "nav-link" href = "ProfilePrototpye.html">Profile</a>
+                <a class = "nav-link" href = "Inbox.html"> Inbox</a>
+            </div>
+        </div>
+</nav>
+        <div class = "page-container">
+            <input type = "text" id = "searchInput" placeholder = "Search for Items...">
+        
+            <div class = "product-section">
+                <h5>Browse Listings</h5>
+                <div class="product-grid" id="productGrid">
+
+                <a class="product-card" href="ProfilePrototype2.html">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80" alt="Watch">
+                    <div class="card-info">
+                        <p class="product-name">Watch</p>
+                        <p class="product-seller">@Josh</p>
+                        <p class="product-price">$85.00</p>
+                    </div>
+                </a>
+
+                <a class="product-card" href="ProfilePrototype2.html">
+                    <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=600&q=80" alt="Sneakers">
+                    <div class="card-info">
+                        <p class="product-name">Running Sneakers — Size 10</p>
+                        <p class="product-seller">@Josh</p>
+                        <p class="product-price">$55.00</p>
+                    </div>
+                </a>
+
+                <a class="product-card" href="ProfilePrototype2.html">
+                    <img src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?q=80&w=2565&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+                    <div class="card-info">
+                        <p class="product-name">Mouse</p>
+                        <p class="product-seller">@Josh</p>
+                        <p class="product-price">$35.00</p>
+                    </div>
+                </a>
+
+                <a class="product-card" href="ProfilePrototype2.html">
+                    <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=2576&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sneakers">
+                    <div class="card-info">
+                        <p class="product-name">Button Up Shirt - Size L</p>
+                        <p class="product-seller">@Josh</p>
+                        <p class="product-price">$25.00</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const productGrid = document.getElementById('productGrid');
+        const cards = productGrid.querySelectorAll('.product-card');
+
+        searchInput.addEventListener("keyup", () => {
+           const value = searchInput.value.toLowerCase();
+           let visible = 0;
+           cards.forEach(card => {
+              const name = card.querySelector('.product-name').textContent.toLowerCase();
+              const seller = card.querySelector('.product-seller').textContent.toLowerCase();
+              if (name.includes(value) || seller.includes(value)) {
+                  card.style.display = 'block';
+                  visible++;
+              } else {
+                  card.style.display = 'none';
+              }
+           });
+
+           const existing = grid.querySelector('.no-results');
+           if (visible === 0 && !existing) {
+               const noResults = document.createElement('div');
+               noResults.className = 'no-results';
+               noResults.textContent = 'No results found';
+               productGrid.appendChild(noResults);
+           } else if (visible > 0 && existing) {
+               existing.remove();
+           }
+
+        });
+        
+    </script>
+</html>
