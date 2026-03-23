@@ -29,3 +29,7 @@ Dylan Paolo Ordinario
     2. Moderate services - .
     3. Moderate reviews - .
     4. View usage statistics - .
+  
+<!-- Fetch in Bruno Button -->
+<div class="bruno-fetch-button" data-bruno-collection-url="https://github.com/Paolo-Ordinario/340-01.git"></div>
+<script src="https://fetch.usebruno.com/button.js"></script>
