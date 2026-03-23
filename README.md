@@ -30,6 +30,7 @@ Dylan Paolo Ordinario
     3. Moderate reviews - .
     4. View usage statistics - .
   
-<!-- Fetch in Bruno Button -->
-<div class="bruno-fetch-button" data-bruno-collection-url="https://github.com/Paolo-Ordinario/340-01.git"></div>
+<div class="bruno-fetch-button" 
+  data-bruno-collection-url="https://github.com/Paolo-Ordinario/340-01/tree/main/340-01/backend-api/Bruno/G-Market">
+</div>
 <script src="https://fetch.usebruno.com/button.js"></script>
