@@ -41,7 +41,8 @@ public class ReviewController {
     }
 
     @PutMapping("/{id}/reply")
-    public ResponseEntity<Object> replyToReview(@PathVariable Long id, @RequestBody String reply) {
+    public ResponseEntity<Object> replyToReview(@PathVariable Long id, @RequestBody java.util.Map<String, String> body) {
+        String reply = body.get("reply");
         Review updated = reviewService.replyToReview(id, reply);
         if (updated != null) {
             return ResponseEntity.ok(updated);
