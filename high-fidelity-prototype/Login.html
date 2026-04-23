@@ -14,7 +14,6 @@
             display: flex;
             flex-direction: column;
         }
-
         .auth-container {
             max-width: 420px;
             margin: 60px auto;
@@ -23,155 +22,54 @@
             box-shadow: 0 0px 20px rgba(0,0,0,0.1);
             padding: 40px;
         }
-
-        .auth-title {
-            font-size: 26px;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 6px;
-            color: #1c1c1e;
-        }
-
-        .auth-subtitle {
-            text-align: center;
-            color: #888;
-            font-size: 14px;
-            margin-bottom: 28px;
-        }
-
-        .form-group {
-            margin-bottom: 16px;
-        }
-
-        .form-group label {
-            font-size: 13px;
-            font-weight: 600;
-            color: #444;
-            margin-bottom: 6px;
-            display: block;
-        }
-
+        .auth-title { font-size: 26px; font-weight: bold; text-align: center; margin-bottom: 6px; color: #1c1c1e; }
+        .auth-subtitle { text-align: center; color: #888; font-size: 14px; margin-bottom: 28px; }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { font-size: 13px; font-weight: 600; color: #444; margin-bottom: 6px; display: block; }
         .form-group input {
-            width: 100%;
-            padding: 10px 14px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            font-size: 14px;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
-            outline: none;
-            box-sizing: border-box;
+            width: 100%; padding: 10px 14px; border: 1px solid #ddd;
+            border-radius: 10px; font-size: 14px; outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease; box-sizing: border-box;
         }
-
-        .form-group input:focus {
-            border-color: #22c277;
-            box-shadow: 0 0 0 3px rgba(34, 194, 119, 0.15);
-        }
-
+        .form-group input:focus { border-color: #22c277; box-shadow: 0 0 0 3px rgba(34, 194, 119, 0.15); }
         .submit-btn {
-            width: 100%;
-            padding: 12px;
-            background: #22c277;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 8px;
-            transition: all 0.3s ease;
+            width: 100%; padding: 12px; background: #22c277; color: white;
+            border: none; border-radius: 10px; font-size: 15px; font-weight: 600;
+            cursor: pointer; margin-top: 8px; transition: all 0.3s ease;
         }
-
-        .submit-btn:hover {
-            background: rgb(48, 186, 89);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(34, 194, 119, 0.3);
-        }
-
-        .divider {
-            text-align: center;
-            color: #aaa;
-            font-size: 13px;
-            margin: 20px 0;
-            position: relative;
-        }
-
-        .divider::before,
-        .divider::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            width: 40%;
-            height: 1px;
-            background: #eee;
-        }
-
-        .divider::before { left: 0; }
-        .divider::after { right: 0; }
-
-        .signup-link {
-            text-align: center;
-            font-size: 14px;
-            color: #888;
-        }
-
-        .signup-link a {
-            color: #22c277;
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        .signup-link a:hover {
-            text-decoration: underline;
-        }
-
-        .error-msg {
-            background: #fff0f0;
-            color: #dc3545;
-            border: 1px solid #f5c6cb;
-            border-radius: 8px;
-            padding: 10px 14px;
-            font-size: 13px;
-            margin-bottom: 16px;
-            display: none;
-        }
-
-        .success-msg {
-            background: #f0fff7;
-            color: #22c277;
-            border: 1px solid #b2f0d6;
-            border-radius: 8px;
-            padding: 10px 14px;
-            font-size: 13px;
-            margin-bottom: 16px;
-            display: none;
-        }
-            </style>
-    </head>
+        .submit-btn:hover { background: rgb(48, 186, 89); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(34, 194, 119, 0.3); }
+        .divider { text-align: center; color: #aaa; font-size: 13px; margin: 20px 0; position: relative; }
+        .divider::before, .divider::after { content: ''; position: absolute; top: 50%; width: 40%; height: 1px; background: #eee; }
+        .divider::before { left: 0; } .divider::after { right: 0; }
+        .signup-link { text-align: center; font-size: 14px; color: #888; }
+        .signup-link a { color: #22c277; font-weight: 600; text-decoration: none; }
+        .signup-link a:hover { text-decoration: underline; }
+        .error-msg { background: #fff0f0; color: #dc3545; border: 1px solid #f5c6cb; border-radius: 8px; padding: 10px 14px; font-size: 13px; margin-bottom: 16px; display: none; }
+        .success-msg { background: #f0fff7; color: #22c277; border: 1px solid #b2f0d6; border-radius: 8px; padding: 10px 14px; font-size: 13px; margin-bottom: 16px; display: none; }
+    </style>
+</head>
 <body>
-    <div class = "auth-container">
-        <div class = "auth-title">Welcome Back</div>
-        <div class = "auth-subtitle">Log in to your G-Market account</div>
-
-        <div class = "error-msg" id="error-msg"></div>
-        <div class = "success-msg" id="success-msg"></div>
-
-        <div class = "form-group">
+    <div class="auth-container">
+        <div class="auth-title">Welcome Back</div>
+        <div class="auth-subtitle">Log in to your G-Market account</div>
+        <div class="error-msg" id="error-msg"></div>
+        <div class="success-msg" id="success-msg"></div>
+        <div class="form-group">
             <label for="email">Email</label>
             <input type="email" id="email" placeholder="your@university.edu">
         </div>
-
-        <div class = "form-group">
+        <div class="form-group">
             <label for="password">Password</label>
             <input type="password" id="password" placeholder="Your password">
         </div>
-
-        <button class = "submit-btn" onclick = "handleLogin()">Log In</button>
-
-        <div class = "divider">or</div>
-        <div class = "signup-link">Don't have an account? <a href="Signup.html">Sign Up</a></div>
+        <button class="submit-btn" onclick="handleLogin()">Log In</button>
+        <div class="divider">or</div>
+        <div class="signup-link">Don't have an account? <a href="Signup.html">Sign Up</a></div>
     </div>
 
     <script>
+        const API = 'http://localhost:8080';
+
         async function handleLogin() {
             const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value.trim();
@@ -188,7 +86,7 @@
             }
 
             try {
-                const response = await fetch('http://localhost:3000/login', {
+                const response = await fetch(`${API}/users/login`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email, password })
@@ -197,20 +95,19 @@
                 const data = await response.json();
 
                 if (response.ok) {
-                    // Save user info to localStorage so other pages know who's logged in
-                    localStorage.setItem('user', JSON.stringify(data.user));
-                    successMsg.textContent = `Welcome back, ${data.user.name}! Redirecting...`;
+                    localStorage.setItem('user', JSON.stringify(data));
+                    successMsg.textContent = `Welcome back, ${data.name}! Redirecting...`;
                     successMsg.style.display = 'block';
                     setTimeout(() => window.location.href = 'ProfilePrototpye.html', 2000);
                 } else {
-                    errorMsg.textContent = data.error || 'Invalid email or password.';
+                    errorMsg.textContent = data.message || 'Invalid email or password.';
                     errorMsg.style.display = 'block';
                 }
             } catch (err) {
-                errorMsg.textContent = 'Could not connect to server. Make sure your server is running.';
+                errorMsg.textContent = 'Could not connect to server. Make sure Spring Boot is running on port 8080.';
                 errorMsg.style.display = 'block';
             }
         }
     </script>
 </body>
-
+</html>
