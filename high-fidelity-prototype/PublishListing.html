@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Publish Listing - G-Market</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'DM Sans', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .page-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .publish-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .publish-card h2 {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .publish-card p.subtitle {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 5px;
+            display: block;
+            color: #333;
+        }
+
+        input, textarea {
+            width: 100%;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #22c277;
+            box-shadow: 0 0 0 3px rgba(34, 194, 119, 0.15);
+        }
+
+        .image-preview-box {
+            width: 100%;
+            height: 200px;
+            border: 2px dashed #ddd;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            overflow: hidden;
+            background: #fafafa;
+            transition: border-color 0.2s;
+        }
+
+        .image-preview-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        .image-preview-box span {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        button[type="submit"] {
+            background-color: #22c277;
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: rgb(40, 160, 89);
+        }
+
+        #successMessage {
+            display: none;
+            background: #e6f9f0;
+            border: 1px solid #22c277;
+            color: #166a42;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
+        #errorMessage {
+            display: none;
+            background: #fdecea;
+            border: 1px solid #e74c3c;
+            color: #c0392b;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #22c277;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+            color: #22c277;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="prototype.html">G-Market</a>
+            <div class="navbar-nav">
+                <a class="nav-link" href="prototype.html">Market</a>
+                <a class="nav-link" href="ProfilePrototpye.html">Profile</a>
+                <a class="nav-link" href="Inbox.html">Inbox</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-container">
+        <a class="back-link" href="prototype.html">&larr; Back to Market</a>
+
+        <div class="publish-card">
+            <h2>📦 Publish a Listing</h2>
+            <p class="subtitle">Fill out the details below to list your item on G-Market.</p>
+
+            <!-- Title -->
+            <label for="title">Item Title *</label>
+            <input type="text" id="title" placeholder="e.g. Blue Nike Sneakers Size 10" required />
+
+            <!-- Description -->
+            <label for="description">Description *</label>
+            <textarea id="description" rows="4" placeholder="Describe your item — condition, size, brand, etc." required></textarea>
+
+            <!-- Price -->
+            <label for="price">Price ($) *</label>
+            <input type="number" id="price" placeholder="e.g. 25.00" min="0" step="0.01" required />
+
+            <!-- Image URL -->
+            <label for="imageUrl">Image URL</label>
+            <input type="text" id="imageUrl" placeholder="Paste an image link (optional)" oninput="previewImage(this.value)" />
+
+            <!-- Image Preview -->
+            <div class="image-preview-box" id="previewBox">
+                <span id="previewPlaceholder">Image preview will appear here</span>
+                <img id="previewImg" src="" alt="Preview" />
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" onclick="publishListing()">Publish Listing</button>
+
+            <div id="successMessage">✅ Your listing has been published successfully!</div>
+            <div id="errorMessage">❌ Something went wrong. Please check your inputs and try again.</div>
+        </div>
+    </div>
+
+    <script>
+        // Preview image as user types URL
+        function previewImage(url) {
+            const img = document.getElementById('previewImg');
+            const placeholder = document.getElementById('previewPlaceholder');
+            if (url.trim() !== '') {
+                img.src = url;
+                img.style.display = 'block';
+                placeholder.style.display = 'none';
+                img.onerror = () => {
+                    img.style.display = 'none';
+                    placeholder.style.display = 'block';
+                };
+            } else {
+                img.style.display = 'none';
+                placeholder.style.display = 'block';
+            }
+        }
+
+        // Publish listing via POST /listings
+        async function publishListing() {
+            const title = document.getElementById('title').value.trim();
+            const description = document.getElementById('description').value.trim();
+            const price = parseFloat(document.getElementById('price').value);
+            const imageUrl = document.getElementById('imageUrl').value.trim();
+
+            // Basic validation
+            if (!title || !description || isNaN(price)) {
+                document.getElementById('errorMessage').textContent = '❌ Please fill in all required fields.';
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('successMessage').style.display = 'none';
+                return;
+            }
+
+            const listing = {
+                userId: 1, // Replace with actual logged-in user ID
+                title: title,
+                description: description,
+                price: price,
+                imageUrl: imageUrl || null,
+                isSold: false
+            };
+
+            try {
+                const response = await fetch('http://localhost:8080/listings', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(listing)
+                });
+
+                if (response.ok) {
+                    document.getElementById('successMessage').style.display = 'block';
+                    document.getElementById('errorMessage').style.display = 'none';
+                    // Clear the form
+                    document.getElementById('title').value = '';
+                    document.getElementById('description').value = '';
+                    document.getElementById('price').value = '';
+                    document.getElementById('imageUrl').value = '';
+                    document.getElementById('previewImg').style.display = 'none';
+                    document.getElementById('previewPlaceholder').style.display = 'block';
+                } else {
+                    throw new Error('Server error');
+                }
+            } catch (err) {
+                document.getElementById('errorMessage').textContent = '❌ Could not connect to server. Make sure the backend is running.';
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('successMessage').style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>
