@@ -5,9 +5,9 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Entity
-@Table(name = "listings")
-public class Listing {
+    @Entity
+    @Table(name = "listings")
+    public class Listing {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
