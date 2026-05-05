@@ -22,30 +22,112 @@
             box-shadow: 0 0px 20px rgba(0,0,0,0.1);
             padding: 40px;
         }
-        .auth-title { font-size: 26px; font-weight: bold; text-align: center; margin-bottom: 6px; color: #1c1c1e; }
-        .auth-subtitle { text-align: center; color: #888; font-size: 14px; margin-bottom: 28px; }
-        .form-group { margin-bottom: 16px; }
-        .form-group label { font-size: 13px; font-weight: 600; color: #444; margin-bottom: 6px; display: block; }
+        .auth-title { 
+            font-size: 26px;
+            font-weight: bold; 
+            text-align: center; 
+            margin-bottom: 6px; 
+            color: #1c1c1e; 
+        }
+        .auth-subtitle { 
+            text-align: center; 
+            color: #888; 
+            font-size: 14px; 
+            margin-bottom: 28px; 
+        }
+        .form-group { 
+            margin-bottom: 16px; 
+        }
+        .form-group label { 
+            font-size: 13px; 
+            font-weight: 600; 
+            color: #444; 
+            margin-bottom: 6px; 
+            display: block; }
         .form-group input {
-            width: 100%; padding: 10px 14px; border: 1px solid #ddd;
-            border-radius: 10px; font-size: 14px; outline: none;
+            width: 100%; 
+            padding: 10px 14px; 
+            border: 1px solid #ddd;
+            border-radius: 10px; 
+            font-size: 14px; 
+            outline: none;
             transition: border-color 0.2s ease, box-shadow 0.2s ease; box-sizing: border-box;
         }
-        .form-group input:focus { border-color: #22c277; box-shadow: 0 0 0 3px rgba(34, 194, 119, 0.15); }
-        .submit-btn {
-            width: 100%; padding: 12px; background: #22c277; color: white;
-            border: none; border-radius: 10px; font-size: 15px; font-weight: 600;
-            cursor: pointer; margin-top: 8px; transition: all 0.3s ease;
+        .form-group input:focus { 
+            border-color: #22c277; 
+            box-shadow: 0 0 0 3px rgba(34, 194, 119, 0.15); 
         }
-        .submit-btn:hover { background: rgb(48, 186, 89); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(34, 194, 119, 0.3); }
-        .divider { text-align: center; color: #aaa; font-size: 13px; margin: 20px 0; position: relative; }
-        .divider::before, .divider::after { content: ''; position: absolute; top: 50%; width: 40%; height: 1px; background: #eee; }
-        .divider::before { left: 0; } .divider::after { right: 0; }
-        .signup-link { text-align: center; font-size: 14px; color: #888; }
-        .signup-link a { color: #22c277; font-weight: 600; text-decoration: none; }
-        .signup-link a:hover { text-decoration: underline; }
-        .error-msg { background: #fff0f0; color: #dc3545; border: 1px solid #f5c6cb; border-radius: 8px; padding: 10px 14px; font-size: 13px; margin-bottom: 16px; display: none; }
-        .success-msg { background: #f0fff7; color: #22c277; border: 1px solid #b2f0d6; border-radius: 8px; padding: 10px 14px; font-size: 13px; margin-bottom: 16px; display: none; }
+        .submit-btn {
+            width: 100%; 
+            padding: 12px; 
+            background: #22c277; 
+            color: white;
+            border: none; 
+            border-radius: 10px; 
+            font-size: 15px; 
+            font-weight: 600;
+            cursor: pointer; 
+            margin-top: 8px; 
+            transition: all 0.3s ease;
+        }
+        .submit-btn:hover { 
+            background: rgb(48, 186, 89); 
+            transform: translateY(-1px); 
+            box-shadow: 0 4px 12px rgba(34, 194, 119, 0.3); 
+        }
+        .divider { 
+            text-align: center; 
+            color: #aaa; 
+            font-size: 13px; 
+            margin: 20px 0; 
+            position: relative; }
+        .divider::before, .divider::after { 
+            content: ''; 
+            position: absolute; 
+            top: 50%; 
+            width: 40%; 
+            height: 1px; 
+            background: #eee; 
+        }
+        .divider::before { 
+            left: 0; 
+        } 
+        .divider::after { 
+            right: 0; 
+        }
+        .signup-link { 
+            text-align: center; 
+            font-size: 14px; 
+            color: #888; 
+        }
+        .signup-link a { 
+            color: #22c277; 
+            font-weight: 600; 
+            text-decoration: none; 
+        }
+        .signup-link a:hover { 
+            text-decoration: underline; 
+        }
+        .error-msg { 
+            background: #fff0f0; 
+            color: #dc3545; 
+            border: 1px solid #f5c6cb; 
+            border-radius: 8px; 
+            padding: 10px 14px; 
+            font-size: 13px; 
+            margin-bottom: 16px; 
+            display: none; 
+        }
+        .success-msg {
+            background: #f0fff7; 
+            color: #22c277; 
+            border: 1px solid #b2f0d6; 
+            border-radius: 8px; 
+            padding: 10px 14px; 
+            font-size: 13px; 
+            margin-bottom: 16px; 
+            display: none; 
+        }
     </style>
 </head>
 <body>

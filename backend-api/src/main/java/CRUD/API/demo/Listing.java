@@ -3,6 +3,7 @@ package CRUD.API.demo;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "listings")
@@ -24,8 +25,9 @@ public class Listing {
     @Column(nullable = false)
     private BigDecimal price;
 
-    @Column(name = "image_url")
-    private String imageUrl;
+    @JsonIgnore
+    @Column(name = "image", columnDefinition = "bytea")
+    private byte[] image;
 
     @Column(name = "is_sold")
     private Boolean isSold = false;
@@ -50,8 +52,8 @@ public class Listing {
     public BigDecimal getPrice() { return price; }
     public void setPrice(BigDecimal price) { this.price = price; }
 
-    public String getImageUrl() { return imageUrl; }
-    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
+    public byte[] getImage() { return image; }
+    public void setImage(byte[] image) { this.image = image; }
 
     public Boolean getIsSold() { return isSold; }
     public void setIsSold(Boolean isSold) { this.isSold = isSold; }
