@@ -5,6 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.http.MediaType;
 
 @RestController
 @RequestMapping("/listings")
@@ -12,6 +14,9 @@ import java.util.Optional;
 public class ListingController {
     @Autowired
     ListingService listingService;
+
+    @Autowired
+    ListingRepository listingRepository;
 
     @GetMapping
     public List<Listing> getAllListings() {
@@ -79,5 +84,32 @@ public class ListingController {
         } else {
             return ResponseEntity.status(404).body("Listing not found.");
         }
+    }
+
+    @PutMapping("/{id}/image")
+    public ResponseEntity<Object> uploadListingImage(@PathVariable Long id, @RequestParam("file") MultipartFile file) {
+        try {
+            Optional<Listing> existing = listingService.getListingById(id);
+            if (existing.isPresent()) {
+                Listing listing = existing.get();
+                listing.setImage(file.getBytes());
+                listingRepository.save(listing);
+                return ResponseEntity.ok("Image uploaded.");
+            } else {
+                return ResponseEntity.status(404).body("Listing not found.");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Could not upload image: " + e.getMessage());
+        }
+    }
+
+    @GetMapping("/{id}/image")
+    public ResponseEntity<byte[]> getListingImage(@PathVariable Long id) {
+        Optional<Listing> existing = listingService.getListingById(id);
+        if (existing.isPresent() && existing.get().getImage() != null) {
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(existing.get().getImage());
+    } else {
+        return ResponseEntity.status(404).build();
+    }
     }
 }

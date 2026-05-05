@@ -1,6 +1,7 @@
 package CRUD.API.demo;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "users")
@@ -22,6 +23,10 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @JsonIgnore
+    @Column(name = "profile_picture", columnDefinition = "bytea")
+    private byte[] profilePicture;
+
     public User() {}
 
     public Long getId() { return id; }
@@ -38,4 +43,7 @@ public class User {
 
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
+
+    public byte[] getProfilePicture() { return profilePicture; }
+    public void setProfilePicture(byte[] profilePicture) { this.profilePicture = profilePicture; }
 }

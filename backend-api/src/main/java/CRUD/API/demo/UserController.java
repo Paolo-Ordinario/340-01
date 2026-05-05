@@ -3,6 +3,10 @@ package CRUD.API.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.http.MediaType;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -72,4 +76,30 @@ public class UserController {
             return ResponseEntity.status(404).body("User not found.");
         }
     }
+    @PutMapping("/{id}/profile-picture")
+    public ResponseEntity<Object> uploadProfilePicture(@PathVariable Long id, @RequestParam("file") MultipartFile file) {
+        try {
+            Optional<User> existing = userService.getUserById(id);
+            if (existing.isPresent()) {
+                User user = existing.get();
+                user.setProfilePicture(file.getBytes());
+                userService.updateUser(id, user);
+            return ResponseEntity.ok("Profile picture updated.");
+        } else {
+            return ResponseEntity.status(404).body("User not found.");
+        }
+    } catch (Exception e) {
+        return ResponseEntity.status(500).body("Could not upload image.");
+    }
+}
+
+    @GetMapping("/{id}/profile-picture")
+        public ResponseEntity<byte[]> getProfilePicture(@PathVariable Long id) {
+            Optional<User> existing = userService.getUserById(id);
+                if (existing.isPresent() && existing.get().getProfilePicture() != null) {
+            return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(existing.get().getProfilePicture());
+    } else {
+        return ResponseEntity.status(404).build();
+    }
+}
 }
