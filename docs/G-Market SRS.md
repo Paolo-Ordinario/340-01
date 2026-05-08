@@ -79,17 +79,7 @@
     Then I see contents, price, and other related details of the item and seller.
   ```
 
-- **US‑CUST‑005 — Follow Sellers**  
-  _Story:_ As a customer, I want to follow sellers so that I receive their items on my feed.  
-  _Acceptance:_
-  ```gherkin
-  Scenario: Follow a seller
-    Given the seller is real
-    When I choose to follow
-    Then I am able to see their products/ new products on my feed
-  ```
-
-- **US‑CUST‑006 — Write a review**  
+- **US‑CUST‑005 — Write a review**  
   _Story:_ As a customer, I want to rate and write reviews on the sellers profile about the item bought and the buying interaction to the benefit of other costumers.
   _Acceptance:_
   ```gherkin
@@ -100,7 +90,7 @@
       And it is published or queued per moderation policy
   ```
 
-- **US‑CUST‑007 — Read reviews**  
+- **US‑CUST‑006 — Read reviews**  
   _Story:_ As a customer, I want to read previous reviews on a seller profile so that I can make an informed decision.  
   _Acceptance:_
   ```gherkin
