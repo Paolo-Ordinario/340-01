@@ -2,7 +2,7 @@
 # Requirements – G-Market
 
 **Project Name:** G-Market\
-**Team:** Paolo Ordinario - Sellers; Brian Ramirez - Customer\
+**Team:** Paolo Ordinario - Customer; Brian Ramirez - Seller\
 **Course:** CSC 340\
 **Version:** 1.0\
 **Date:** 2026-02-13\
